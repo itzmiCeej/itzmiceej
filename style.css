@@ -1,3 +1,4 @@
+/* ========== GLOBAL RESET ========== */
 * {
   margin: 0;
   padding: 0;
@@ -11,8 +12,10 @@ body {
   background: url(assets/background.jpg) center/cover fixed;
   color: white;
   overflow-x: hidden;
+  width: 100%;
 }
 
+/* ========== HEADER ========== */
 header {
   background: rgba(0, 0, 0, 0.6);
   display: flex;
@@ -23,9 +26,9 @@ header {
   top: 0;
   left: 0;
   padding: 10px 5%;
-  z-index: 1000;
   backdrop-filter: blur(7px);
   transition: all 0.3s ease;
+  z-index: 1000;
 }
 header img {
   height: 70px;
@@ -74,6 +77,7 @@ header img {
   display: none;
 }
 
+/* ========== HOME SECTION ========== */
 .home {
   min-height: 100vh;
   display: flex;
@@ -91,7 +95,6 @@ header img {
   max-width: 1300px;
   margin: auto;
 }
-
 .hero-text h2 {
   font-size: clamp(1.5rem, 4vw, 3rem);
   text-shadow: 0 0 15px rgb(200, 20, 20);
@@ -106,7 +109,9 @@ header img {
   animation: animate-gradient 5s linear infinite;
 }
 @keyframes animate-gradient {
-  to { background-position: 400%; }
+  to {
+    background-position: 400%;
+  }
 }
 .social-link {
   margin-top: 25px;
@@ -133,118 +138,134 @@ header img {
   animation: bounce 1.5s ease-in-out infinite;
 }
 @keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-15px); }
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
 }
 
-
+/* ========== ABOUT SECTION ========== */
 .about {
-      padding: 100px 10%;
-      text-align: center;
-       background-color: rgba(0,0,0,0.5);
-      margin-left: 10%;
-      margin-right: 10%;
-      border-radius: 30px;
-    }
+  padding: 100px 10%;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  margin-left: 10%;
+  margin-right: 10%;
+  border-radius: 30px;
+}
 .about h1 {
   color: white;
   font-size: 3vh;
   text-transform: uppercase;
 }
-    .about img {
-      height: 300px;
-      animation: spin 10s infinite;
-    }
-    .about-body {
-      position: relative; /* important: contains the canvas */
-      background: rgba(0,0,0,0.5);
-      padding: 60px;
-      border-radius: 30px;
-      border: 3px solid rgb(200,20,20);
-      max-width: 900px; /* fixed from 100vh (was incorrect) */
-      margin: 0 auto;
-      overflow: hidden;
-      transition: transform 0.3s ease;
-      box-shadow: 0 0 30px rgb(200, 20, 20);
-    }
-    .about-body:hover { transform: scale(1.02); }
-
-    #matrix {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      display: block;
-      z-index: 0;
-      pointer-events: none;
-      opacity: 0.9;
-    }
-
-    .about-text {
-      position: relative;
-      z-index: 1;
-      color: #eee;
-    }
-    .about-text p {
-      margin-top: 8px;
-      font-size: clamp(0.95rem, 2vw, 1.05rem);
-      line-height: 1.6;
-    }
-
-    /* --- Responsive: show hamburger and toggle menu for small screens --- */
-    @media (max-width: 768px) {
-      .menu-icon { display: block; }
-
-      /* hide desktop links by default on small screens */
-      .head-link {
-        display: none;
-        position: absolute;
-        top: 100%;
-        right: 5%;
-        background: rgba(0,0,0,0.85);
-        padding: 12px;
-        border-radius: 8px;
-        flex-direction: column;
-        gap: 10px;
-        width: auto;
-        min-width: 160px;
-        z-index: 999;
-      }
-
-#menu-toggle:checked + label + .head-link {
-  display: flex;
+.about img {
+  height: 300px;
+  animation: spin 10s infinite;
 }
+.about-body {
+  position: relative;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 60px;
+  border-radius: 30px;
+  border: 3px solid rgb(200, 20, 20);
+  max-width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  box-shadow: 0 0 30px rgb(200, 20, 20);
+}
+.about-body:hover {
+  transform: scale(1.02);
+}
+#matrix {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.9;
+}
+.about-text {
+  position: relative;
+  z-index: 1;
+  color: #eee;
+}
+.about-text p {
+  margin-top: 8px;
+  font-size: clamp(0.95rem, 2vw, 1.05rem);
+  line-height: 1.6;
 }
 
+/* ========== SKILL SECTION FIXED ========== */
 .skill {
-  padding: 100px 10%;
+  padding: 70px 10px;
   text-align: center;
 }
+
 .skill h1 {
   text-transform: uppercase;
   font-size: 4vh;
+  margin-bottom: 20px;
 }
+
 table {
-  width: 100%;
+  width: 80%;
+  max-width: 700px;
   border-collapse: collapse;
-  margin-top: 3vh;
+  margin: 0 auto;
+  table-layout: fixed; /* ✅ para stable width bawat column */
 }
+
 th, td {
   border: 2px solid rgb(200, 20, 20);
   padding: 15px;
   text-transform: uppercase;
-  padding: 2vh;
+  word-break: break-word;
+  text-align: center;
 }
+
 th {
   background: rgb(200, 20, 20);
   color: white;
 }
+
 td {
   background: rgba(0, 0, 0, 0.6);
 }
+
 td i {
   color: rgb(200, 20, 20);
-  font-size: 2rem;
+  font-size: 1.8rem;
+}
+
+/* ✅ Para hindi gumalaw o mag-slide sa mobile */
+@media (max-width: 768px) {
+  table {
+    width: 100%;
+    max-width: 100%;
+    table-layout: fixed;
+  }
+
+  th, td {
+    padding: 8px;
+    font-size: 0.9rem;
+  }
+
+  td i {
+    font-size: 1.4rem;
+  }
+}
+
+
+/* ========== TESTIMONIALS ========== */
+.testi {
+  position: relative;
+  width: 100%;
+  overflow: hidden; /* ✅ hides overflow but keeps fade edges */
 }
 
 .testi h1 {
@@ -254,29 +275,39 @@ td i {
   margin-bottom: 5vh;
   font-size: 2.5vh;
 }
+
 .testimonials-container {
   display: flex;
   gap: 20px;
   flex-wrap: nowrap;
   width: max-content;
   animation: scrollTestimonials 25s linear infinite;
+  padding: 10px 0;
 }
 
+/* ✅ smooth scrolling animation */
 @keyframes scrollTestimonials {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
+
+/* testimonial card design */
 .testimonial-card {
-  min-width: 400px;
+  flex: 0 0 80%;
+  max-width: 350px;
+  min-width: 250px;
   background: rgba(0, 0, 0, 0.6);
   border-radius: 20px;
   padding: 20px;
   transition: all 0.3s ease;
+  box-sizing: border-box;
 }
+
 .testimonial-card:hover {
   transform: translateY(-10px);
   border: 2px solid rgb(200, 20, 20);
 }
+
 .testimonial-avatar {
   width: 80px;
   height: 80px;
@@ -284,14 +315,58 @@ td i {
   margin-bottom: 15px;
   border: 2px solid rgb(200, 20, 20);
 }
+
 .testimonial-quote {
   color: rgb(200, 20, 20);
   font-weight: bold;
   margin-bottom: 10px;
 }
-.stars-rate i { color: gold; }
 
+.stars-rate i {
+  color: gold;
+}
 
+/* ✅ FADE EFFECT sa mga dulo (malinis na cut habang umaandar) */
+.testi::before,
+.testi::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 100px; /* gaano kalapad ang fade */
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.testi::before {
+  left: 0;
+  background: linear-gradient(to right, rgba(0, 0, 0, 1), transparent);
+}
+
+.testi::after {
+  right: 0;
+  background: linear-gradient(to left, rgba(0, 0, 0, 1), transparent);
+}
+
+/* ✅ Responsive tweak */
+@media (max-width: 768px) {
+  .testimonials-container {
+    gap: 10px;
+    animation: scrollTestimonials 30s linear infinite;
+  }
+
+  .testimonial-card {
+    flex: 0 0 85%;
+    max-width: 320px;
+  }
+
+  .testi::before,
+  .testi::after {
+    width: 60px; /* mas maliit fade sa phone */
+  }
+}
+
+/* ========== PROJECTS ========== */
 .project {
   padding: 100px 10%;
   text-align: center;
@@ -300,7 +375,6 @@ td i {
   color: white;
   font-size: 3vh;
   margin-bottom: 5vh;
-
 }
 .cards {
   display: flex;
@@ -308,7 +382,6 @@ td i {
   gap: 30px;
   justify-content: center;
 }
-
 .card-1 {
   background: rgba(0, 0, 0, 0.6);
   border-radius: 20px;
@@ -336,6 +409,7 @@ td i {
   margin-top: 20px;
 }
 
+/* ========== CTA & FOOTER ========== */
 .cta {
   padding: 100px 10%;
   background: rgba(0, 0, 0, 0.5);
@@ -358,7 +432,6 @@ td i {
   color: rgb(200, 20, 20);
   font-size: 1.8rem;
 }
-
 .copy-right {
   background: #000;
   padding: 15px;
@@ -366,4 +439,53 @@ td i {
   font-size: 1rem;
   color: rgb(200, 20, 20);
   border-top: 2px solid rgb(200, 20, 20);
+}
+
+/* ========== RESPONSIVE SECTION ========== */
+@media (max-width: 900px) {
+  .menu-icon {
+    display: block;
+  }
+  .head-link {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 5%;
+    background: rgba(0, 0, 0, 0.85);
+    padding: 12px;
+    border-radius: 8px;
+    flex-direction: column;
+    gap: 10px;
+    width: auto;
+    min-width: 160px;
+    z-index: 999;
+  }
+  #menu-toggle:checked + label + .head-link {
+    display: flex;
+  }
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+  .hero img {
+    width: 70%;
+  }
+  .about,
+  .skill,
+  .project,
+  .cta {
+    padding: 50px 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+  .about-body {
+    max-width: 100%;
+    padding: 30px;
+  }
+  .testimonial-card {
+    min-width: 280px;
+  }
+  table, th, td {
+    font-size: 0.85rem;
+  }
 }
