@@ -192,7 +192,7 @@ header img {
     }
 
     /* --- Responsive: show hamburger and toggle menu for small screens --- */
-    @media (max-width: 900px) {
+    @media (max-width: 768px) {
       .menu-icon { display: block; }
 
       /* hide desktop links by default on small screens */
